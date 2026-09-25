@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="FruitiOS — a colorful, lightweight operating system built from scratch."
+  >
+
+  <title>FruitiOS — The new "Apple" OS for Intel.</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Background decoration -->
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
+  <div class="background-orb orb-three"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+
+      <a href="#home" class="brand">
+        <div class="brand-icon">🍎</div>
+        <span>FruitiOS</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#apps">Apps</a>
+        <a href="#story">Story</a>
+        <a href="#terminal">Terminal</a>
+        <a href="#download">Download</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button
+          class="theme-button"
+          id="themeButton"
+          aria-label="Toggle dark mode"
+        >
+          ☾
+        </button>
+
+        <button
+          class="menu-button"
+          id="menuButton"
+          aria-label="Open navigation"
+        >
+          ☰
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero section" id="home">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          FruitiOS 2 is growing
+        </div>
+
+        <h1>
+          Your computer.
+          <span class="gradient-text">But fruitier.</span>
+        </h1>
+
+        <p class="hero-description">
+          FruitiOS is a hobby operating-system project focused on making
+          computing colorful, simple and fun — from a tiny command line
+          to a complete graphical desktop.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="button primary-button" href="#download">
+            Try FruitiOS
+            <span>→</span>
+          </a>
+
+          <a class="button secondary-button" href="#story">
+            Explore the project
+          </a>
+        </div>
+
+        <div class="hero-tags">
+          <span>Open project</span>
+          <span>Built from scratch</span>
+          <span>Made for fun</span>
+        </div>
+
+      </div>
+
+
+      <!-- FruitiOS desktop preview -->
+      <div class="os-preview">
+
+        <div class="desktop">
+
+          <div class="desktop-wallpaper">
+            <div class="wallpaper-fruit">🍊</div>
+            <div class="wallpaper-title">FruitiOS</div>
+            <div class="wallpaper-version">Fresh. Simple. Yours.</div>
+          </div>
+
+
+          <!-- Notes window -->
+          <div class="window notes-window">
+
+            <div class="window-titlebar">
+              <div class="window-title">
+                <span>📝</span>
+                Notes
+              </div>
+
+              <div class="window-controls">
+                <button>−</button>
+                <button>□</button>
+                <button>×</button>
+              </div>
+            </div>
+
+            <div class="notes-content">
+              <strong>Welcome to FruitiOS!</strong>
+              <p>
+                A little operating system with a lot of personality.
+              </p>
+            </div>
+
+          </div>
+
+
+          <!-- Terminal window -->
+          <div class="window mini-terminal">
+
+            <div class="window-titlebar dark-titlebar">
+              <div class="window-title">
+                <span>⌘</span>
+                Terminal
+              </div>
+
+              <div class="window-controls dark-controls">
+                <button>−</button>
+                <button>□</button>
+                <button>×</button>
+              </div>
+            </div>
+
+            <div class="terminal-mini-content">
+              <div>FruitiOS Terminal</div>
+              <div class="terminal-green">$FruitiOS:&gt; <span>help</span></div>
+              <div>Available commands:</div>
+              <div>help clear echo ls about</div>
+              <div class="terminal-green">$FruitiOS:&gt; <span class="cursor-block"></span></div>
+            </div>
+
+          </div>
+
+
+          <!-- Desktop icons -->
+          <div class="desktop-icons">
+            <div class="desktop-icon">
+              <span>📁</span>
+              <small>Files</small>
+            </div>
+
+            <div class="desktop-icon">
+              <span>🎵</span>
+              <small>Music</small>
+            </div>
+          </div>
+
+
+          <!-- Taskbar -->
+          <div class="taskbar">
+
+            <button class="fruit-button" id="fruitButton">
+              🍎
+            </button>
+
+            <div class="task-apps">
+              <div class="task-app active">⌘</div>
+              <div class="task-app">📝</div>
+              <div class="task-app">📁</div>
+            </div>
+
+            <div class="task-time" id="taskTime">
+              20:39
+            </div>
+
+          </div>
+
+
+          <!-- Fruit menu -->
+          <div class="fruit-menu" id="fruitMenu">
+
+            <div class="fruit-menu-header">
+              <div class="fruit-menu-avatar">🍓</div>
+
+              <div>
+                <strong>FruitiOS</strong>
+                <span>Hello!</span>
+              </div>
+            </div>
+
+            <div class="fruit-app-grid">
+
+              <button>
+                <span>📁</span>
+                Files
+              </button>
+
+              <button>
+                <span>📝</span>
+                Notes
+              </button>
+
+              <button>
+                <span>🎵</span>
+                Music
+              </button>
+
+              <button>
+                <span>🖼️</span>
+                Gallery
+              </button>
+
+              <button>
+                <span>⚙️</span>
+                Settings
+              </button>
+
+              <button>
+                <span>⌘</span>
+                Terminal
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="section content-section" id="features">
+
+      <div class="section-heading">
+        <div class="eyebrow">Why FruitiOS?</div>
+
+        <h2>
+          An OS with
+          <span class="gradient-text">personality.</span>
+        </h2>
+
+        <p>
+          FruitiOS mixes the familiar parts of a desktop operating system
+          with its own colorful interface.
+        </p>
+      </div>
+
+
+      <div class="feature-grid">
+
+        <article class="feature-card large-card pink-card">
+          <div class="feature-icon">🍓</div>
+
+          <div>
+            <h3>A totally Fruiti interface</h3>
+            <p>
+              Rounded windows, soft shadows, colorful backgrounds and
+              a Fruit Menu make FruitiOS instantly recognizable.
+            </p>
+          </div>
+
+          <div class="feature-decoration">
+            <span>🍎</span>
+            <span>🍊</span>
+            <span>🍋</span>
+          </div>
+        </article>
+
+
+        <article class="feature-card">
+          <div class="feature-icon blue-icon">⚡</div>
+
+          <h3>Lightweight</h3>
+
+          <p>
+            FruitiOS is designed around a focused set of features instead
+            of unnecessary complexity.
+          </p>
+        </article>
+
+
+        <article class="feature-card">
+          <div class="feature-icon purple-icon">⌘</div>
+
+          <h3>Terminal included</h3>
+
+          <p>
+            The graphical interface doesn't replace FruitiOS's roots.
+            The command line is still part of the experience.
+          </p>
+        </article>
+
+
+        <article class="feature-card wide-card">
+          <div>
+            <div class="feature-icon orange-icon">🖱️</div>
+
+            <h3>Real desktop interaction</h3>
+
+            <p>
+              Windows can be focused and dragged, the cursor responds
+              to mouse movement and the desktop is built around actual
+              graphical interaction.
+            </p>
+          </div>
+
+          <div class="mini-window-stack">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- APPS -->
+    <section class="section content-section" id="apps">
+
+      <div class="section-heading">
+        <div class="eyebrow">Built-in apps</div>
+
+        <h2>
+          Everything you need.
+          <span class="gradient-text">Nothing boring.</span>
+        </h2>
+      </div>
+
+
+      <div class="apps-grid">
+
+        <div class="app-card">
+          <div class="app-icon files-icon">📁</div>
+          <h3>Files</h3>
+          <p>Browse the FruitiOS filesystem.</p>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon notes-icon">📝</div>
+          <h3>Notes</h3>
+          <p>Simple notes without distractions.</p>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon terminal-icon">⌘</div>
+          <h3>Terminal</h3>
+          <p>The original FruitiOS experience lives on.</p>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon music-icon">🎵</div>
+          <h3>Music</h3>
+          <p>A lightweight home for your music.</p>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon gallery-icon">🌄</div>
+          <h3>Gallery</h3>
+          <p>View your FruitiOS memories.</p>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon settings-icon">⚙️</div>
+          <h3>Settings</h3>
+          <p>Make FruitiOS feel like yours.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STORY / EVOLUTION -->
+    <section class="section story-section" id="story">
+
+      <div class="story-panel">
+
+        <div class="story-copy">
+
+          <div class="eyebrow">The FruitiOS story</div>
+
+          <h2>
+            From
+            <span class="code-highlight">$FruitiOS:&gt;</span>
+            to this.
+          </h2>
+
+          <p>
+            FruitiOS began with a simple command-line environment.
+            Over time it grew into an experiment in window management,
+            graphics, mouse input, applications and an entirely custom
+            interface.
+          </p>
+
+          <p>
+            FruitiOS 2 continues that idea with a more polished,
+            cheerful and modern visual language.
+          </p>
+
+          <a href="#terminal" class="text-link">
+            Try the original-style terminal
+            <span>→</span>
+          </a>
+
+        </div>
+
+
+        <div class="timeline">
+
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span>01</span>
+            <h3>The Terminal</h3>
+            <p>A tiny command-driven FruitiOS environment.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span>02</span>
+            <h3>The Desktop</h3>
+            <p>Windows, framebuffer graphics and mouse support arrive.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span>03</span>
+            <h3>FruitiOS 2</h3>
+            <p>A new generation of FruitiOS design.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TERMINAL -->
+    <section class="section terminal-section" id="terminal">
+
+      <div class="terminal-heading">
+        <div class="eyebrow dark-eyebrow">Try it yourself</div>
+
+        <h2>
+          Meet the
+          <span>FruitiOS Terminal.</span>
+        </h2>
+
+        <p>
+          Type <code>help</code> below.
+        </p>
+      </div>
+
+
+      <div class="interactive-terminal">
+
+        <div class="interactive-terminal-titlebar">
+
+          <div class="terminal-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <span>FruitiOS Terminal</span>
+
+          <div></div>
+
+        </div>
+
+
+        <div
+          class="terminal-output"
+          id="terminalOutput"
+          aria-live="polite"
+        >
+          <div class="terminal-welcome">
+            FruitiOS Terminal
+          </div>
+
+          <div>
+            Type <span class="terminal-highlight">help</span>
+            to see available commands.
+          </div>
+
+          <br>
+        </div>
+
+
+        <form class="terminal-form" id="terminalForm">
+
+          <label for="terminalInput">
+            $FruitiOS:&gt;
+          </label>
+
+          <input
+            id="terminalInput"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="FruitiOS terminal command"
+          >
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- DOWNLOAD -->
+    <section class="section download-section" id="download">
+
+      <div class="download-card">
+
+        <div class="download-fruit">
+          🍏
+        </div>
+
+        <h2>
+          Ready for something
+          <span class="gradient-text">fresh?</span>
+        </h2>
+
+        <p>
+          FruitiOS is still a project in development.
+          Follow its journey and try new builds as they arrive.
+        </p>
+
+
+        <div class="download-actions">
+
+          <a href="#" class="button primary-button">
+            Download FruitiOS
+            <span>↓</span>
+          </a>
+
+          <a href="#" class="button secondary-button">
+            View on GitHub
+          </a>
+
+        </div>
+
+        <small>
+          Experimental software — expect fruit-related surprises.
+        </small>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-icon">🍎</div>
+        <span>FruitiOS</span>
+      </div>
+
+      <p>Computing, freshly picked.</p>
+    </div>
+
+
+    <div class="footer-links">
+      <a href="#features">Features</a>
+      <a href="#apps">Apps</a>
+      <a href="#story">Story</a>
+      <a href="#terminal">Terminal</a>
+    </div>
+
+
+    <div class="copyright">
+      © <span id="year"></span> FruitiOS
+    </div>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
