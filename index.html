@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FruitiOS — The New &quot;Apple&quot; OS for Intel. A modern-retro operating system inspired by classic desktop computing." />
+  <title>FruitiOS - The New "Apple" OS for Intel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="boot-screen" id="bootScreen" aria-hidden="true">
+    <div class="boot-box">
+      <div class="boot-logo" aria-hidden="true">F</div>
+      <div>
+        <strong>FruitiOS</strong>
+        <span>Starting web experience...</span>
+      </div>
+    </div>
+    <div class="boot-progress"><span></span></div>
+  </div>
+
+  <main>
+    <section class="desktop-shell" id="home" aria-label="FruitiOS desktop preview">
+      <div class="desktop-wallpaper"></div>
+
+      <div class="desktop-icons" aria-label="Desktop shortcuts">
+        <button class="desktop-shortcut" data-window="computerWindow">
+          <span class="shortcut-icon folder-icon" aria-hidden="true"></span>
+          <span>My Computer</span>
+        </button>
+        <button class="desktop-shortcut" data-window="aboutWindow">
+          <span class="shortcut-icon doc-icon" aria-hidden="true"></span>
+          <span>About FruitiOS</span>
+        </button>
+        <button class="desktop-shortcut" data-scroll="#terminal">
+          <span class="shortcut-icon terminal-icon" aria-hidden="true">&gt;_</span>
+          <span>Terminal</span>
+        </button>
+      </div>
+
+      <section class="window hero-window draggable active-window" id="heroWindow">
+        <div class="window-titlebar drag-handle">
+          <div class="titlebar-title">
+            <span class="titlebar-app-icon">F</span>
+            Welcome to FruitiOS
+          </div>
+          <div class="window-buttons" aria-hidden="true">
+            <span>_</span><span>□</span><span>×</span>
+          </div>
+        </div>
+        <div class="hero-window-body">
+          <div class="hero-copy">
+            <div class="version-chip">FruitiOS 2 • Development Build</div>
+            <h1>FruitiOS</h1>
+            <p class="hero-kicker">The New <span>“Apple”</span> OS for Intel.</p>
+            <p class="hero-lead">Apple moved on. We didn’t.</p>
+            <p class="hero-description">
+              A modern-retro operating system built around classic desktop computing: real windows, a taskbar, a terminal, files, notes, and a UI that feels like the future imagined in 2000.
+            </p>
+            <div class="hero-actions">
+              <button class="retro-button primary" data-scroll="#download">Download FruitiOS</button>
+              <button class="retro-button" data-scroll="#features">Explore Features</button>
+            </div>
+            <div class="hero-meta">
+              <span><b>Platform:</b> Intel / x86</span>
+              <span><b>Style:</b> Classic desktop, modernized</span>
+              <span><b>Status:</b> In development</span>
+            </div>
+          </div>
+
+          <div class="hero-preview" aria-label="FruitiOS UI preview">
+            <div class="preview-window">
+              <div class="preview-titlebar"><span>Notes</span><span>_ □ ×</span></div>
+              <div class="preview-notepad">
+                <strong>Welcome.txt</strong>
+                <p>FruitiOS keeps the parts of desktop computing we miss — then gives them a modern purpose.</p>
+              </div>
+            </div>
+            <div class="preview-window preview-terminal">
+              <div class="preview-titlebar"><span>Terminal</span><span>_ □ ×</span></div>
+              <pre>$FruitiOS:&gt; version
+FruitiOS 2
+Development Build
+
+$FruitiOS:&gt; <i></i></pre>
+            </div>
+          </div>
+        </div>
+        <div class="window-statusbar"><span>Ready</span><span>FruitiOS Web</span></div>
+      </section>
+
+      <section class="window small-dialog draggable is-hidden" id="computerWindow" aria-label="My Computer window">
+        <div class="window-titlebar drag-handle">
+          <div class="titlebar-title"><span class="titlebar-app-icon">F</span>My Computer</div>
+          <button class="titlebar-close" data-close="computerWindow" aria-label="Close My Computer">×</button>
+        </div>
+        <div class="dialog-body">
+          <h3>System</h3>
+          <dl class="system-list">
+            <div><dt>Operating system</dt><dd>FruitiOS 2</dd></div>
+            <div><dt>Architecture</dt><dd>Intel / x86</dd></div>
+            <div><dt>Interface</dt><dd>Framebuffer GUI</dd></div>
+            <div><dt>Input</dt><dd>Keyboard + mouse</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="window small-dialog draggable is-hidden" id="aboutWindow" aria-label="About FruitiOS window">
+        <div class="window-titlebar drag-handle">
+          <div class="titlebar-title"><span class="titlebar-app-icon">F</span>About FruitiOS</div>
+          <button class="titlebar-close" data-close="aboutWindow" aria-label="Close About FruitiOS">×</button>
+        </div>
+        <div class="about-dialog-body">
+          <div class="about-logo">F</div>
+          <div>
+            <h3>FruitiOS 2</h3>
+            <p>A hobby operating-system project with a retro desktop soul and a modern direction.</p>
+            <small>Not affiliated with or endorsed by Apple Inc.</small>
+          </div>
+        </div>
+      </section>
+
+      <nav class="start-menu" id="startMenu" aria-label="FruitiOS menu">
+        <div class="start-rail"><span>FruitiOS</span></div>
+        <div class="start-content">
+          <button data-scroll="#features"><span>▣</span><b>Features</b><small>Explore the desktop</small></button>
+          <button data-scroll="#apps"><span>▤</span><b>Programs</b><small>Built-in FruitiOS apps</small></button>
+          <button data-scroll="#terminal"><span>&gt;_</span><b>Terminal</b><small>Try the command line</small></button>
+          <div class="menu-divider"></div>
+          <button data-scroll="#story"><span>?</span><b>About</b><small>How FruitiOS evolved</small></button>
+          <button data-scroll="#download"><span>↓</span><b>Download</b><small>Get a development build</small></button>
+        </div>
+      </nav>
+
+      <div class="taskbar" role="navigation" aria-label="FruitiOS taskbar">
+        <button class="start-button" id="startButton" aria-expanded="false"><span class="mini-fruit">F</span>Start</button>
+        <div class="taskbar-divider"></div>
+        <button class="task-button active" data-window="heroWindow">Welcome to FruitiOS</button>
+        <div class="taskbar-spacer"></div>
+        <div class="tray"><span class="tray-led"></span><span id="desktopClock">10:15</span></div>
+      </div>
+    </section>
+
+    <section class="site-section" id="features">
+      <div class="section-wrap">
+        <div class="section-heading retro-heading">
+          <span class="section-eyebrow">CONTROL PANEL / FEATURES</span>
+          <h2>Old-school structure.<br />New-school purpose.</h2>
+          <p>FruitiOS deliberately keeps the clarity of classic desktop systems while polishing the parts that deserve to feel modern.</p>
+        </div>
+
+        <div class="control-panel window static-window">
+          <div class="window-titlebar">
+            <div class="titlebar-title"><span class="titlebar-app-icon">F</span>FruitiOS Control Panel</div>
+            <div class="window-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
+          </div>
+          <div class="control-grid">
+            <article class="control-item"><div class="control-icon">▣</div><div><h3>Real desktop UI</h3><p>Windows, focus, dragging, menus, icons and a taskbar — not just a terminal with wallpaper.</p></div></article>
+            <article class="control-item"><div class="control-icon">&gt;_</div><div><h3>Terminal at heart</h3><p>The original FruitiOS spirit stays alive through the <code>$FruitiOS:&gt;</code> command line.</p></div></article>
+            <article class="control-item"><div class="control-icon">⌁</div><div><h3>Intel / x86 roots</h3><p>FruitiOS is aimed at the hardware era Apple has been steadily leaving behind.</p></div></article>
+            <article class="control-item"><div class="control-icon">▤</div><div><h3>Built-in programs</h3><p>Files, Notes, Terminal and system tools make FruitiOS feel like an actual desktop environment.</p></div></article>
+            <article class="control-item"><div class="control-icon">◫</div><div><h3>Framebuffer graphics</h3><p>A custom graphical interface with software-rendered UI elements and its own visual identity.</p></div></article>
+            <article class="control-item"><div class="control-icon">✣</div><div><h3>Modern-retro design</h3><p>Windows 2000 energy without being trapped in 2000: cleaner spacing, sharper hierarchy and smoother interaction.</p></div></article>
+          </div>
+          <div class="window-statusbar"><span>6 items</span><span>Classic View</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section alt-section" id="apps">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <span class="section-eyebrow">PROGRAM FILES</span>
+          <h2>The FruitiOS essentials.</h2>
+          <p>Simple programs that fit the OS instead of fighting for attention.</p>
+        </div>
+
+        <div class="programs-window window static-window">
+          <div class="window-titlebar">
+            <div class="titlebar-title"><span class="titlebar-app-icon">F</span>C:\FruitiOS\Programs</div>
+            <div class="window-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
+          </div>
+          <div class="classic-toolbar"><button>File</button><button>Edit</button><button>View</button><button>Help</button></div>
+          <div class="address-row"><span>Address</span><div>C:\FruitiOS\Programs</div></div>
+          <div class="program-grid">
+            <article class="program"><div class="program-icon notes">A</div><h3>Notes</h3><p>A lightweight text editor for quick writing inside FruitiOS.</p></article>
+            <article class="program"><div class="program-icon files">▰</div><h3>Files</h3><p>Browse the FruitiOS filesystem and familiar directories.</p></article>
+            <article class="program"><div class="program-icon terminal">&gt;_</div><h3>Terminal</h3><p>The command line that started it all.</p></article>
+            <article class="program"><div class="program-icon settings">⚙</div><h3>System</h3><p>Desktop and system controls in classic Control Panel style.</p></article>
+          </div>
+          <div class="window-statusbar"><span>4 object(s)</span><span>FruitiOS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section" id="story">
+      <div class="section-wrap two-column-story">
+        <div class="section-heading story-heading">
+          <span class="section-eyebrow">FRUITIOS HISTORY</span>
+          <h2>From a prompt<br />to a desktop.</h2>
+          <p>FruitiOS started small: a command-driven environment. The project grew into framebuffer graphics, a software cursor, mouse input, layered windows, a Start-style menu, and actual desktop applications.</p>
+          <p class="story-note">The goal isn’t to clone an old operating system. It’s to continue the design language from where classic desktop computing left off.</p>
+        </div>
+
+        <div class="history-window window static-window">
+          <div class="window-titlebar">
+            <div class="titlebar-title"><span class="titlebar-app-icon">F</span>FruitiOS History.txt</div>
+            <div class="window-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
+          </div>
+          <div class="history-list">
+            <div class="history-row"><span class="history-year">01</span><div><b>The command line</b><p><code>$FruitiOS:&gt;</code> becomes the heart of the project.</p></div></div>
+            <div class="history-row"><span class="history-year">02</span><div><b>Framebuffer desktop</b><p>Pixels become windows, icons, a taskbar and a software cursor.</p></div></div>
+            <div class="history-row"><span class="history-year">03</span><div><b>Mouse + windows</b><p>Clicking, focus and draggable layered windows make the desktop interactive.</p></div></div>
+            <div class="history-row current"><span class="history-year">04</span><div><b>FruitiOS 2</b><p>The retro desktop idea gets a cleaner, more intentional identity.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="terminal-section" id="terminal">
+      <div class="section-wrap">
+        <div class="section-heading terminal-heading">
+          <span class="section-eyebrow dark">COMMAND PROMPT</span>
+          <h2>Try FruitiOS.</h2>
+          <p>This terminal runs in your browser, but its commands are inspired by the real FruitiOS project. Type <code>help</code> to begin.</p>
+        </div>
+
+        <div class="terminal-window window static-window">
+          <div class="window-titlebar terminal-titlebar">
+            <div class="titlebar-title"><span class="titlebar-app-icon dark-icon">&gt;_</span>FruitiOS Terminal</div>
+            <div class="window-buttons dark-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
+          </div>
+          <div class="terminal-screen" id="terminalOutput" aria-live="polite">
+            <div>FruitiOS Terminal</div>
+            <div>Copyright (C) FruitiOS Project</div>
+            <div class="terminal-muted">Type 'help' for a list of commands.</div>
+            <br />
+          </div>
+          <form class="terminal-input-row" id="terminalForm">
+            <label for="terminalInput">$FruitiOS:&gt;</label>
+            <input id="terminalInput" autocomplete="off" spellcheck="false" aria-label="Terminal command" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section download-section" id="download">
+      <div class="section-wrap">
+        <div class="setup-window window static-window">
+          <div class="window-titlebar">
+            <div class="titlebar-title"><span class="titlebar-app-icon">F</span>FruitiOS Setup</div>
+            <div class="window-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
+          </div>
+          <div class="setup-body">
+            <aside class="setup-sidebar">
+              <div class="setup-logo">F</div>
+              <strong>FruitiOS 2</strong>
+              <span>Development Build</span>
+            </aside>
+            <div class="setup-copy">
+              <span class="section-eyebrow">READY TO INSTALL?</span>
+              <h2>Give Intel another chapter.</h2>
+              <p>FruitiOS is experimental software in active development. Development builds, source code and installation information can live here once you connect the real project links.</p>
+              <div class="setup-specs">
+                <div><span>Architecture</span><b>Intel / x86</b></div>
+                <div><span>Release channel</span><b>Development</b></div>
+                <div><span>Interface</span><b>Graphical desktop + terminal</b></div>
+              </div>
+              <div class="setup-actions">
+                <button class="retro-button primary" data-placeholder="download">Download Build</button>
+                <button class="retro-button" data-placeholder="github">View Source</button>
+              </div>
+              <p class="legal-note">FruitiOS is an independent project and is not affiliated with or endorsed by Apple Inc.</p>
+            </div>
+          </div>
+          <div class="window-statusbar"><span>Setup ready</span><span>FruitiOS</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
