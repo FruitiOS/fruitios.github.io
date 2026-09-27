@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FruitiOS 0.9 — a modern retro operating system for Intel hardware." />
+  <title>FruitiOS - The New "Apple" OS for Intel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- FruitiOS-style boot screen -->
+  <div class="boot-screen" id="bootScreen" aria-label="FruitiOS startup screen">
+    <div class="boot-center">
+      <img src="assets/apple.png" class="boot-logo" alt="FruitiOS apple logo" />
+      <div class="boot-name">FruitiOS 0.9</div>
+      <div class="boot-progress"><span id="bootProgress"></span></div>
+      <div class="boot-hint">Press Esc for startup details</div>
+    </div>
+  </div>
+
+  <main class="desktop" id="desktop">
+    <!-- Desktop shortcuts -->
+    <div class="desktop-icons" aria-label="Desktop shortcuts">
+      <button class="desktop-icon" data-window="welcomeWindow">
+        <span class="folder-icon css-home-icon"><span>⌂</span></span>
+        <span>Home</span>
+      </button>
+
+      <button class="desktop-icon" data-window="galleryWindow">
+        <span class="icon-frame"><img src="assets/photos.png" alt="" /></span>
+        <span>Photos</span>
+      </button>
+
+      <button class="desktop-icon" data-window="appsWindow">
+        <span class="disk-icon"></span>
+        <span>File System</span>
+      </button>
+
+      <button class="desktop-icon" data-window="appsWindow">
+        <span class="icon-frame"><img src="assets/files.png" alt="" /></span>
+        <span>File Explorer</span>
+      </button>
+
+      <button class="desktop-icon" data-notice="Trash is empty.">
+        <span class="trash-icon">♻</span>
+        <span>Trash</span>
+      </button>
+
+      <button class="desktop-icon" data-app="Console">
+        <span class="icon-frame"><img src="assets/console.png" alt="" /></span>
+        <span>Console</span>
+      </button>
+
+      <button class="desktop-icon" data-window="downloadWindow">
+        <span class="volume-icon"></span>
+        <span>1.5 MB<br />Volume</span>
+      </button>
+
+      <button class="desktop-icon" data-app="Browser">
+        <span class="icon-frame"><img src="assets/browser.png" alt="" /></span>
+        <span>Browser</span>
+      </button>
+
+      <button class="desktop-icon" data-notice="System image: alpine-std 3.23.6 x86_64">
+        <span class="disk-icon light"></span>
+        <span>alpine-std<br />3.23.6 x86_64</span>
+      </button>
+
+      <button class="desktop-icon" data-notice="USB device mounted.">
+        <span class="usb-icon"></span>
+        <span>usb</span>
+      </button>
+
+      <button class="desktop-icon" data-app="Settings">
+        <span class="icon-frame"><img src="assets/settings.png" alt="" /></span>
+        <span>Settings</span>
+      </button>
+    </div>
+
+    <!-- Desktop branding, matching FruitiOS -->
+    <div class="desktop-brand">
+      <img src="assets/apple.png" alt="FruitiOS logo" />
+      <div class="desktop-brand-name">FruitiOS</div>
+      <div class="desktop-brand-version">0.9 • LINUX EDITION</div>
+    </div>
+
+    <!-- Main welcome window -->
+    <section class="window main-window active" id="welcomeWindow">
+      <div class="window-titlebar drag-handle">
+        <div class="window-title">
+          <img src="assets/apple.png" alt="" />
+          <span>Welcome to FruitiOS</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-control" data-minimize="welcomeWindow" aria-label="Minimize">_</button>
+          <button class="window-control" data-maximize="welcomeWindow" aria-label="Maximize">□</button>
+          <button class="window-control close" data-close="welcomeWindow" aria-label="Close">×</button>
+        </div>
+      </div>
+
+      <div class="window-menubar">
+        <button>File</button><button>Edit</button><button>View</button><button>Help</button>
+      </div>
+
+      <div class="window-body welcome-body">
+        <div class="welcome-hero">
+          <div class="welcome-copy">
+            <div class="retro-badge">FRUITIOS 0.9</div>
+            <h1>The New “Apple” OS for Intel.</h1>
+            <p class="lead">A modern-retro desktop operating system with the look, feel and personality of classic computing.</p>
+            <p class="subcopy">Apple moved on. FruitiOS keeps Intel hardware fun.</p>
+
+            <div class="hero-actions">
+              <button class="retro-button primary" data-window="downloadWindow">Download FruitiOS</button>
+              <button class="retro-button" data-window="appsWindow">Explore Apps</button>
+            </div>
+
+            <div class="system-strip">
+              <span>FruitiOS 0.9</span>
+              <span>x86_64</span>
+              <span>Linux Edition</span>
+              <span>Retro UI</span>
+            </div>
+          </div>
+
+          <div class="hero-logo-panel">
+            <img src="assets/apple.png" class="hero-logo" alt="FruitiOS apple logo" />
+            <strong>FruitiOS</strong>
+            <span>0.9 • LINUX EDITION</span>
+          </div>
+        </div>
+
+        <div class="welcome-section">
+          <div class="section-heading">
+            <span class="section-icon">i</span>
+            <div>
+              <strong>What is FruitiOS?</strong>
+              <small>A retro desktop, rebuilt for modern hardware.</small>
+            </div>
+          </div>
+
+          <div class="feature-boxes">
+            <button class="feature-box" data-window="appsWindow">
+              <span class="mini-icon"><img src="assets/files.png" alt="" /></span>
+              <b>Real desktop apps</b>
+              <small>Browser, Console, Files, Notes, Paint, Photos and more.</small>
+            </button>
+            <button class="feature-box" data-window="galleryWindow">
+              <span class="mini-icon"><img src="assets/photos.png" alt="" /></span>
+              <b>FruitiOS visual identity</b>
+              <small>Pixel art, classic chrome and the signature apple-red accent.</small>
+            </button>
+            <button class="feature-box" data-app="Task Manager">
+              <span class="mini-icon"><img src="assets/tasks.png" alt="" /></span>
+              <b>Classic, not ancient</b>
+              <small>Inspired by the desktop era, designed to still feel usable today.</small>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="statusbar">
+        <span>Ready</span>
+        <span>FruitiOS Website</span>
+      </div>
+    </section>
+
+    <!-- Apps -->
+    <section class="window apps-window hidden" id="appsWindow">
+      <div class="window-titlebar drag-handle">
+        <div class="window-title"><img src="assets/files.png" alt="" /><span>FruitiOS Applications</span></div>
+        <div class="window-controls">
+          <button class="window-control" data-minimize="appsWindow">_</button>
+          <button class="window-control" data-maximize="appsWindow">□</button>
+          <button class="window-control close" data-close="appsWindow">×</button>
+        </div>
+      </div>
+      <div class="window-menubar">
+        <button>File</button><button>Edit</button><button>View</button><button>Tools</button><button>Help</button>
+      </div>
+      <div class="toolbar">
+        <button class="tool-button">←</button>
+        <button class="tool-button">→</button>
+        <button class="tool-button">↑</button>
+        <div class="address-bar">C:\FruitiOS\Applications</div>
+      </div>
+      <div class="window-body app-browser">
+        <aside class="app-sidebar">
+          <b>System Tasks</b>
+          <button data-window="welcomeWindow">About FruitiOS</button>
+          <button data-window="galleryWindow">View screenshots</button>
+          <button data-window="downloadWindow">Download</button>
+        </aside>
+        <div class="app-grid">
+          <button class="app-entry" data-app="Browser"><img src="assets/browser.png" alt="" /><span>Browser</span></button>
+          <button class="app-entry" data-app="Calculator"><img src="assets/calculator.png" alt="" /><span>Calculator</span></button>
+          <button class="app-entry" data-app="Console"><img src="assets/console.png" alt="" /><span>Console</span></button>
+          <button class="app-entry" data-app="File Explorer"><img src="assets/files.png" alt="" /><span>File Explorer</span></button>
+          <button class="app-entry" data-app="Tic Tac Toe"><img src="assets/game.png" alt="" /><span>Tic Tac Toe</span></button>
+          <button class="app-entry" data-app="Notes"><img src="assets/notes.png" alt="" /><span>Notes</span></button>
+          <button class="app-entry" data-app="Paint"><img src="assets/paint.png" alt="" /><span>Paint</span></button>
+          <button class="app-entry" data-app="Photo Preview"><img src="assets/photos.png" alt="" /><span>Photo Preview</span></button>
+          <button class="app-entry" data-app="Settings"><img src="assets/settings.png" alt="" /><span>Settings</span></button>
+          <button class="app-entry" data-app="Task Manager"><img src="assets/tasks.png" alt="" /><span>Task Manager</span></button>
+        </div>
+      </div>
+      <div class="statusbar"><span>10 object(s)</span><span>FruitiOS</span></div>
+    </section>
+
+    <!-- Generic app preview -->
+    <section class="window app-preview-window hidden" id="appPreviewWindow">
+      <div class="window-titlebar drag-handle">
+        <div class="window-title"><img id="appPreviewTitleIcon" src="assets/apple.png" alt="" /><span id="appPreviewTitle">Application</span></div>
+        <div class="window-controls">
+          <button class="window-control" data-minimize="appPreviewWindow">_</button>
+          <button class="window-control" data-maximize="appPreviewWindow">□</button>
+          <button class="window-control close" data-close="appPreviewWindow">×</button>
+        </div>
+      </div>
+      <div class="window-body app-preview-body">
+        <div class="app-preview-top">
+          <img id="appPreviewIcon" src="assets/apple.png" alt="" />
+          <div>
+            <h2 id="appPreviewName">Application</h2>
+            <p id="appPreviewDescription">A FruitiOS application.</p>
+          </div>
+        </div>
+        <div class="classic-group">
+          <legend>Application information</legend>
+          <div class="info-table">
+            <span>Name</span><b id="appInfoName">Application</b>
+            <span>Platform</span><b>FruitiOS 0.9</b>
+            <span>Style</span><b>Native pixel UI</b>
+          </div>
+        </div>
+        <button class="retro-button" data-window="appsWindow">Back to Applications</button>
+      </div>
+      <div class="statusbar"><span>Ready</span><span>FruitiOS Application</span></div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="window gallery-window hidden" id="galleryWindow">
+      <div class="window-titlebar drag-handle">
+        <div class="window-title"><img src="assets/photos.png" alt="" /><span>Photo Preview - FruitiOS Screenshots</span></div>
+        <div class="window-controls">
+          <button class="window-control" data-minimize="galleryWindow">_</button>
+          <button class="window-control" data-maximize="galleryWindow">□</button>
+          <button class="window-control close" data-close="galleryWindow">×</button>
+        </div>
+      </div>
+      <div class="window-menubar"><button>File</button><button>View</button><button>Image</button><button>Help</button></div>
+      <div class="window-body gallery-body">
+        <div class="gallery-tabs">
+          <button class="gallery-tab active" data-gallery="desktop">Desktop</button>
+          <button class="gallery-tab" data-gallery="boot">Startup</button>
+          <button class="gallery-tab" data-gallery="wallpaper">Wallpaper</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="galleryImage" src="assets/desktop-reference.png" alt="FruitiOS desktop screenshot" />
+        </div>
+      </div>
+      <div class="statusbar"><span id="galleryStatus">Desktop screenshot</span><span>100%</span></div>
+    </section>
+
+    <!-- Download -->
+    <section class="window download-window hidden" id="downloadWindow">
+      <div class="window-titlebar drag-handle">
+        <div class="window-title"><img src="assets/apple.png" alt="" /><span>FruitiOS Setup</span></div>
+        <div class="window-controls">
+          <button class="window-control close" data-close="downloadWindow">×</button>
+        </div>
+      </div>
+      <div class="window-body setup-body">
+        <div class="setup-left">
+          <img src="assets/apple.png" alt="FruitiOS" />
+          <strong>FruitiOS<br />Setup</strong>
+        </div>
+        <div class="setup-content">
+          <h2>Welcome to FruitiOS 0.9 Setup</h2>
+          <p>This wizard will help you obtain the latest FruitiOS build.</p>
+          <div class="classic-group">
+            <legend>Build information</legend>
+            <div class="info-table">
+              <span>Version</span><b>0.9</b>
+              <span>Edition</span><b>Linux Edition</b>
+              <span>Architecture</span><b>x86_64 / Intel</b>
+              <span>Status</span><b>Development build</b>
+            </div>
+          </div>
+          <p class="setup-note">Download links can be connected to your GitHub release or ISO image when ready.</p>
+        </div>
+      </div>
+      <div class="setup-footer">
+        <button class="retro-button" data-close="downloadWindow">Cancel</button>
+        <button class="retro-button primary" id="downloadButton">Download &gt;</button>
+      </div>
+    </section>
+
+    <!-- Start menu -->
+    <div class="start-menu hidden" id="startMenu">
+      <div class="start-menu-rail">FruitiOS <span>0.9</span></div>
+      <div class="start-menu-items">
+        <button data-window="welcomeWindow"><img src="assets/apple.png" alt="" /><span><b>About FruitiOS</b><small>Welcome and project overview</small></span></button>
+        <button data-window="appsWindow"><img src="assets/files.png" alt="" /><span><b>Applications</b><small>Browse FruitiOS apps</small></span></button>
+        <button data-window="galleryWindow"><img src="assets/photos.png" alt="" /><span><b>Photos</b><small>View FruitiOS screenshots</small></span></button>
+        <button data-app="Console"><img src="assets/console.png" alt="" /><span><b>Console</b><small>Open the terminal preview</small></span></button>
+        <div class="start-separator"></div>
+        <button data-window="downloadWindow"><img src="assets/apple.png" alt="" /><span><b>Download</b><small>Get FruitiOS</small></span></button>
+        <button id="restartButton"><span class="restart-symbol">↻</span><span><b>Restart Website…</b><small>Show the startup screen again</small></span></button>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast"></div>
+
+    <!-- Taskbar -->
+    <footer class="taskbar">
+      <button class="start-button" id="startButton" aria-expanded="false">
+        <img src="assets/apple.png" alt="" />
+      </button>
+      <div class="taskbar-divider"></div>
+      <div class="task-buttons" id="taskButtons">
+        <button class="task-button active" data-window="welcomeWindow"><img src="assets/apple.png" alt="" />Welcome to FruitiOS</button>
+      </div>
+      <div class="system-tray">
+        <span class="tray-monitor"></span>
+        <span id="clock">13:12</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
