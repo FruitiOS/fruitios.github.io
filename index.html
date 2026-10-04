@@ -297,9 +297,9 @@
       <div class="setup-footer">
         <button class="retro-button" data-close="downloadWindow">Cancel</button>
         <button class="retro-button primary" id="downloadButton">64-bit UEFI Download&gt;</button>
-        <button class="retro-button primary" id="downloadButton">64-bit Legacy Download (comming soon)&gt;</button>
-        <button class="retro-button primary" id="downloadButton">32-bit Download UEFI (comming soon)&gt;</button>
-        <button class="retro-button primary" id="downloadButton">32-bit Legacy Download (comming soon)&gt;</button>
+        <button class="retro-button primary" id="downloadButton" onclick="commingSoon()">64-bit Legacy Download&gt;</button>
+        <button class="retro-button primary" id="downloadButton" onclick="commingSoon()">32-bit Download UEFI&gt;</button>
+        <button class="retro-button primary" id="downloadButton" onclick="commingSoon()">32-bit Legacy Download&gt;</button>
       </div>
     </section>
 
@@ -316,6 +316,12 @@
         <button id="restartButton"><span class="restart-symbol">↻</span><span><b>Restart Website…</b><small>Show the startup screen again</small></span></button>
       </div>
     </div>
+
+    <script>
+      function commingSoon() {
+        alert("This build isn't avaliable yet... check back later or download an available one.");
+      }
+    </script>
 
     <!-- Toast -->
     <div class="toast hidden" id="toast"></div>
