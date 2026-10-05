@@ -296,10 +296,7 @@
       </div>
       <div class="setup-footer">
         <button class="retro-button" data-close="downloadWindow">Cancel</button>
-        <button class="retro-button primary" id="downloadButton" onclick="FruitiOS_x64UEFI()">64-bit UEFI Download</button>
-        <button class="retro-button primary" id="downloadButton" onclick="commingSoon()">64-bit Legacy Download</button>
-        <button class="retro-button primary" id="downloadButton" onclick="commingSoon()">32-bit UEFI Download</button>
-        <button class="retro-button primary" id="downloadButton" onclick="commingSoon()">32-bit Legacy Download</button>
+        <button class="retro-button primary" id="downloadButton" onclick="downloadWindow()">Download</button>
       </div>
     </section>
 
@@ -318,12 +315,10 @@
     </div>
 
     <script>
-      function commingSoon() {
-        alert("This build isn't avaliable yet... check back later or download an available one.");
+      function downloadWindow() {
+        window.open('/download.html', '_blank');
       }
-      function FruitiOS_x64UEFI() {
-        window.open('https://huggingface.co/datasets/FruitiGaming/FruitiOS/resolve/main/FruitiOS-1.0-x86_64.iso', '_blank');
-      }
+      
     </script>
 
     <!-- Toast -->
