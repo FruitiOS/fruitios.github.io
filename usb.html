@@ -1,1 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FruitiOS USB Installer Helper</title>
+  <meta name="theme-color" content="#3c8588">
 
+  <style>
+    :root {
+      --desktop: #3c8588;
+      --window: #d4d0ca;
+      --titlebar: #ddd9d4;
+      --line: #b8b3ac;
+      --text: #1b1b1b;
+      --button-top: #fbfbfb;
+      --button-bottom: #e6e4e1;
+      --button-border: #9b9995;
+      --blue: #4a9dea;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      min-width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--desktop);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 38px 20px;
+    }
+
+    .installer-window {
+      width: min(910px, 96vw);
+      min-height: 704px;
+      background: var(--window);
+      border: 4px solid #f5f5f5;
+      box-shadow:
+        0 0 0 1px #8e8e8e,
+        2px 2px 0 rgba(0,0,0,.15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .titlebar {
+      height: 47px;
+      flex: 0 0 47px;
+      background: var(--titlebar);
+      border-bottom: 1px solid #bbb6af;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 16px;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .titlebar-title {
+      grid-column: 2;
+      text-align: center;
+    }
+
+    .window-controls {
+      grid-column: 3;
+      justify-self: end;
+      display: flex;
+      gap: 24px;
+      font-family: monospace;
+      font-size: 16px;
+      align-items: center;
+    }
+
+    .window-controls span {
+      width: 16px;
+      text-align: center;
+    }
+
+    .content {
+      flex: 1;
+      padding: 31px 25px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .heading {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 0 10px 17px;
+    }
+
+    .heading img {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      flex: 0 0 auto;
+    }
+
+    .heading h1 {
+      margin: 0 0 2px;
+      font-size: 25px;
+      line-height: 1.15;
+    }
+
+    .heading p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .intro {
+      margin: 0 0 13px;
+      line-height: 1.45;
+    }
+
+    .media-panel {
+      height: 130px;
+      border: 1px solid #aaa7a2;
+      background: #dedbd6;
+      box-shadow:
+        inset 1px 1px 0 #f7f7f7,
+        inset -1px -1px 0 #b2afaa;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 17px 20px;
+      margin-bottom: 16px;
+    }
+
+    .media-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+
+    .media-icons img {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+
+    .media-arrow {
+      font-size: 28px;
+      color: #555;
+      margin: 0 2px;
+    }
+
+    .media-copy strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .media-copy p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .platform-label {
+      margin: 2px 0 9px;
+    }
+
+    .platform-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .download-row {
+      min-height: 52px;
+      border: 1px solid #aaa7a2;
+      background: #dad7d2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 8px 10px 8px 15px;
+    }
+
+    .platform-info {
+      min-width: 0;
+    }
+
+    .platform-name {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .platform-note {
+      color: #444;
+      font-size: 12px;
+    }
+
+    .classic-button {
+      min-width: 185px;
+      min-height: 35px;
+      padding: 7px 15px;
+      border: 1px solid var(--button-border);
+      border-radius: 4px;
+      background: linear-gradient(var(--button-top), var(--button-bottom));
+      color: #252525;
+      text-decoration: none;
+      text-align: center;
+      box-shadow:
+        inset 1px 1px 0 #fff,
+        1px 1px 0 #888;
+      white-space: nowrap;
+    }
+
+    .classic-button:hover,
+    .classic-button:focus-visible {
+      background: #fff;
+      outline: 2px solid var(--blue);
+      outline-offset: 1px;
+    }
+
+    .classic-button:active {
+      background: #d7d4cf;
+      box-shadow: inset 1px 1px 2px #888;
+      transform: translate(1px, 1px);
+    }
+
+    .spacer {
+      flex: 1;
+      min-height: 35px;
+    }
+
+    .status {
+      margin: 0 0 27px;
+      line-height: 1.35;
+    }
+
+    .progress-label {
+      color: #aaa;
+      text-align: center;
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    .progress {
+      height: 2px;
+      background: #eee;
+      border-top: 1px solid #bbb;
+      margin-bottom: 14px;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .footer .classic-button {
+      min-width: 116px;
+    }
+
+    .footer .back {
+      margin-left: auto;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        align-items: flex-start;
+        padding: 14px 8px;
+      }
+
+      .installer-window {
+        min-height: calc(100vh - 28px);
+      }
+
+      .content {
+        padding: 22px 16px 18px;
+      }
+
+      .heading {
+        margin-left: 0;
+        gap: 15px;
+      }
+
+      .heading img {
+        width: 52px;
+        height: 52px;
+      }
+
+      .heading h1 {
+        font-size: 21px;
+      }
+
+      .media-panel {
+        height: auto;
+        align-items: flex-start;
+      }
+
+      .media-icons img {
+        width: 54px;
+        height: 54px;
+      }
+
+      .download-row {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .classic-button {
+        width: 100%;
+      }
+
+      .window-controls {
+        gap: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="installer-window">
+    <header class="titlebar">
+      <div class="titlebar-title">FruitiOS USB Installer Helper</div>
+      <div class="window-controls" aria-hidden="true">
+        <span>−</span>
+        <span>□</span>
+        <span>×</span>
+      </div>
+    </header>
+
+    <section class="content">
+      <div class="heading">
+        <img src="/assets/usb.png" alt="">
+        <div>
+          <h1>FruitiOS USB Installer Helper</h1>
+          <p>Create FruitiOS installation media</p>
+        </div>
+      </div>
+
+      <p class="intro">
+        Download the FruitiOS USB Installer Helper for your current operating system.
+        The helper prepares a USB drive from a FruitiOS ISO so you can boot the installer on another computer.
+      </p>
+
+      <div class="media-panel">
+        <div class="media-icons" aria-hidden="true">
+          <img src="/assets/cd.png" alt="">
+          <span class="media-arrow">→</span>
+          <img src="/assets/usb.png" alt="">
+        </div>
+
+        <div class="media-copy">
+          <strong>ISO image → bootable USB</strong>
+          <p>
+            Choose your platform below. After downloading, open the helper,
+            select your FruitiOS ISO and the USB drive you want to use.
+          </p>
+        </div>
+      </div>
+
+      <p class="platform-label">Select the operating system you are using now:</p>
+
+      <div class="platform-list">
+        <div class="download-row">
+          <div class="platform-info">
+            <span class="platform-name">Windows</span>
+            <span class="platform-note">FruitiOS USB Installer Helper for Windows PCs</span>
+          </div>
+          <a class="classic-button" href="">Download for Windows</a>
+        </div>
+
+        <div class="download-row">
+          <div class="platform-info">
+            <span class="platform-name">macOS</span>
+            <span class="platform-note">FruitiOS USB Installer Helper for Mac</span>
+          </div>
+          <a class="classic-button" href="">Download for macOS</a>
+        </div>
+
+        <div class="download-row">
+          <div class="platform-info">
+            <span class="platform-name">Linux</span>
+            <span class="platform-note">FruitiOS USB Installer Helper for Linux</span>
+          </div>
+          <a class="classic-button" href="">Download for Linux</a>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <p class="status">
+        The USB drive you select in the helper will be erased. Back up any files on it before continuing.
+      </p>
+
+      <div class="progress-label">Ready</div>
+      <div class="progress"></div>
+
+      <footer class="footer">
+        <button class="classic-button" type="button" onclick="location.reload()">Refresh page</button>
+        <a class="classic-button back" href="/downloads.html">Back to downloads</a>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
