@@ -1,1 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FruitiOS Downloads ARM</title>
+  <meta name="theme-color" content="#1a222d">
+  <link rel="icon" href="/assets/downloads.ico">
+  <style>
+    :root {
+      --boot-bg: #1a222d;
+      --boot-text: #f4f4f4;
+      --boot-muted: #d8dde4;
+      --boot-red: #ff3947;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--boot-bg);
+    }
+
+    body {
+      color: var(--boot-text);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+      font-weight: 400;
+      -webkit-font-smoothing: none;
+      text-rendering: geometricPrecision;
+      cursor: default;
+    }
+
+    .boot-screen {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      min-height: 520px;
+      background: var(--boot-bg);
+    }
+
+    .boot-title {
+      position: absolute;
+      top: 5.5%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .fruit-logo {
+      position: absolute;
+      top: 16.8%;
+      left: 50%;
+      width: 82px;
+      height: 96px;
+      transform: translateX(-50%);
+      image-rendering: pixelated;
+      shape-rendering: crispEdges;
+    }
+
+    .boot-menu {
+      position: absolute;
+      top: 43.8%;
+      left: max(7vw, calc(50% - 403px));
+      width: min(806px, 86vw);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .boot-option {
+      margin: 0 0 25px;
+      padding: 0;
+    }
+
+    .boot-option.arm {
+      margin-top: 58px;
+    }
+
+    .boot-option a {
+      display: inline-block;
+      color: var(--boot-text);
+      text-decoration: none;
+      outline: none;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    .boot-option.selected a,
+    .boot-option a:hover,
+    .boot-option a:focus-visible {
+      color: var(--boot-red);
+    }
+
+    .boot-help {
+      position: absolute;
+      left: 50%;
+      bottom: 15.7%;
+      transform: translateX(-50%);
+      margin: 0;
+      color: var(--boot-muted);
+      font-size: 14px;
+      white-space: pre;
+      text-align: center;
+    }
+
+    /* Keep the layout bootloader-like on smaller screens. */
+    @media (max-width: 720px) {
+      body {
+        font-size: 12px;
+      }
+
+      .boot-title,
+      .boot-help {
+        font-size: 12px;
+      }
+
+      .fruit-logo {
+        width: 70px;
+        height: 82px;
+      }
+
+      .boot-menu {
+        left: 8vw;
+        width: 84vw;
+      }
+
+      .boot-option {
+        margin-bottom: 22px;
+      }
+
+      .boot-option.arm {
+        margin-top: 48px;
+      }
+
+      .boot-option.usb {
+        margin-top: 48px;
+      }
+
+      .boot-help {
+        width: 92vw;
+        white-space: normal;
+        line-height: 1.7;
+      }
+    }
+
+    @media (max-height: 620px) {
+      .boot-title {
+        top: 4%;
+      }
+
+      .fruit-logo {
+        top: 12%;
+        width: 64px;
+        height: 75px;
+      }
+
+      .boot-menu {
+        top: 37%;
+      }
+
+      .boot-option {
+        margin-bottom: 16px;
+      }
+
+      .boot-option.arm {
+        margin-top: 34px;
+      }
+
+      .boot-help {
+        bottom: 7%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="boot-screen" aria-label="FruitiOS download selector">
+    <h1 class="boot-title">FruitiOS ARM Downloads</h1>
+
+    <!-- FruitiOS apple logo -->
+    <img class="fruit-logo" src="/assets/apple.png" href="/index.html" alt="FruitiOS">
+
+    <ul class="boot-menu" id="bootMenu">
+      <li class="boot-option selected">
+        <a href="">FruitiOS-ARM64.iso</a>
+      </li>
+      <li class="boot-option">
+        <a href="">FruitiOS-ARM32.iso</a>
+      </li>
+
+      <li class="boot-option arm">
+        <a href="/downloads.html">FruitiOS x86_64 Builds</a>
+      </li>
+
+      <li class="boot-option usb">
+        <a href="/usb.html">FruitiOS USB Installer</a>
+      </li>
+    </ul>
+
+    <p class="boot-help">Mouse pointer: choose     Left Click: select</p>
+  </main>
+
+  <script>
+    (() => {
+      const options = [...document.querySelectorAll(".boot-option")];
+      let selectedIndex = 0;
+
+      function select(index, focus = false) {
+        selectedIndex = (index + options.length) % options.length;
+
+        options.forEach((option, i) => {
+          option.classList.toggle("selected", i === selectedIndex);
+        });
+
+        if (focus) {
+          options[selectedIndex].querySelector("a").focus({
+            preventScroll: true
+          });
+        }
+      }
+
+      options.forEach((option, index) => {
+        const link = option.querySelector("a");
+
+        option.addEventListener("mouseenter", () => select(index));
+        link.addEventListener("focus", () => select(index));
+        link.addEventListener("click", () => select(index));
+      });
+
+      document.addEventListener("keydown", (event) => {
+        switch (event.key) {
+          case "ArrowUp":
+            event.preventDefault();
+            select(selectedIndex - 1, true);
+            break;
+
+          case "ArrowDown":
+            event.preventDefault();
+            select(selectedIndex + 1, true);
+            break;
+
+          case "Enter":
+            event.preventDefault();
+            options[selectedIndex].querySelector("a").click();
+            break;
+        }
+      });
+
+      select(0);
+    })();
+  </script>
+</body>
+</html>
